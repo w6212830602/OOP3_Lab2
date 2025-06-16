@@ -29,9 +29,36 @@ public class Driver {
 
     public static void main(String[] args) {
         // Generate a random array of integers
+        Integer[] nums = new Integer[SIZE];
+		Random rand = new Random();
 
+		for( int i = 0; i < SIZE; i++ )
+		{
+			nums[i] = rand.nextInt( UPPER_BOUND );
+		}
+        
         // Print original array
+        System.out.println("Before sorting:");
+        System.out.println(Arrays.toString(nums));
 
         // Check if a command-line argument was passed
+        if (args.length > 0) {
+            char sortOption = args[0].toLowerCase().charAt(0);
+
+            switch (sortOption) {
+            case 'b':
+                bubbleSortDescending(nums);
+                break;
+            case 'i':
+            case 's':
+            case 'q':
+                break;
+            default:
+                break;
+            }
+        }
+
+        System.out.println("After sorting:");
+        System.out.println(Arrays.toString(nums));
     }
 }
